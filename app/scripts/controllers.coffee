@@ -83,3 +83,36 @@ angular.module('app.controllers', [])
 
 ])
 
+.controller('ProjectsCtrl', [
+  '$scope'
+
+($scope) ->
+
+  $scope.projects = [
+    title: "Globo.tv"
+    repo: "git/globo.tv"
+    status: "updated"
+    id: 1
+  ,
+    title: "API"
+    repo: "git/api"
+    status: "outdated"
+    id: 2
+  ]
+
+  $scope.addProject = ->
+    $scope.projects.push
+      title: $scope.projectTitle
+      repo: $scope.projectRepo
+      status: null
+
+    $scope.projectTitle = ""
+    $scope.projectRepo = ""
+
+  $scope.outdatedCount = ->
+    count = 0
+    angular.forEach $scope.projects, (project) ->
+      count += (if project.status == 'outdated' then 1 else 0)
+
+    count
+])

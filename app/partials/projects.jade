@@ -1,0 +1,11 @@
+div(ng-app='ng-app')
+  h2 Projects
+  div(ng-controller='ProjectsCtrl')
+    span {{outdatedCount()}} of {{projects.length}} outdated
+    ul
+      li(ng-repeat='project in projects')
+        span(class='status_{{project.status}}') {{project.title}}
+    form(class='form-inline', ng-submit='addProject()')
+      input(type='text', ng-model='projectTitle', size='50', placeholder='Title')
+      input(type='text', ng-model='projectRepo', size='50', placeholder='Repository')
+      input.btn.btn-primary(type='submit', value='add')
