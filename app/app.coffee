@@ -6,18 +6,20 @@ App = angular.module('app', [
   'ngResource'
   'ngRoute'
   'app.constants'
+  'app.services'
   'app.controllers'
   'app.directives'
   'app.filters'
-  'app.services'
   'partials'
 ])
 
 App.config([
   '$routeProvider'
   '$locationProvider'
+  '$httpProvider'
 
-($routeProvider, $locationProvider, config) ->
+($routeProvider, $locationProvider, $httpProvider, config) ->
+  delete $httpProvider.defaults.headers.common['X-Requested-With']
 
   $routeProvider
     .when('/projects', {templateUrl: '/partials/projects.html'})
