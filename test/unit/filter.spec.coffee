@@ -1,16 +1,20 @@
 'use strict'
 
-# jasmine specs for filters go here
 describe "filter", ->
   beforeEach(module "app.filters")
 
-  describe "interpolate", ->
+  describe "iconStatus", ->
+    describe "updated", ->
+      it "should returns icon-ok-sign", inject((iconStatusFilter) ->
+        expect(iconStatusFilter("updated")).toEqual "icon-ok-sign"
+      )
 
-    beforeEach(module(($provide) ->
-      $provide.value "version", "TEST_VER"
-      return
-    ))
+    describe "outdated", ->
+      it "should returns icon-exclamation-sign", inject((iconStatusFilter) ->
+        expect(iconStatusFilter("outdated")).toEqual "icon-exclamation-sign"
+      )
 
-    it "should replace VERSION", inject((interpolateFilter) ->
-      expect(interpolateFilter("before %VERSION% after")).toEqual "before TEST_VER after"
-    )
+    describe "null", ->
+      it "should returns null", inject((iconStatusFilter) ->
+        expect(iconStatusFilter(null)).toEqual null
+      )

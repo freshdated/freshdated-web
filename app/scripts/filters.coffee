@@ -4,10 +4,9 @@
 
 angular.module('app.filters', [])
 
-.filter('interpolate', [
-  'version',
-
-(version) ->
+.filter 'iconStatus', ->
   (text) ->
-    String(text).replace(/\%VERSION\%/mg, version)
-])
+    if text == 'updated'
+      'icon-ok-sign'
+    else if text == 'outdated'
+      'icon-exclamation-sign'
