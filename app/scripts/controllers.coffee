@@ -68,23 +68,15 @@ angular.module('app.controllers', [])
       $scope.todos.push todo  unless todo.done
 
 ])
+angular.module('app.controllers', ['app.services'])
 
 .controller('ProjectsCtrl', [
   '$scope'
+  'Projects'
 
-($scope) ->
+($scope, Projects) ->
 
-  $scope.projects = [
-    title: "Globo.tv"
-    repo: "git/globo.tv"
-    status: "updated"
-    id: 1
-  ,
-    title: "API"
-    repo: "git/api"
-    status: "outdated"
-    id: 2
-  ]
+  $scope.projects = Projects.query()
 
   $scope.addProject = ->
     $scope.projects.push
