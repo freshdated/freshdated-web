@@ -22,6 +22,7 @@ App.config([
   delete $httpProvider.defaults.headers.common['X-Requested-With']
 
   $routeProvider
+    .when('/project/:projectId', {templateUrl: '/partials/project.html'})
     .when('/projects', {templateUrl: '/partials/projects.html'})
 
     # Catch all

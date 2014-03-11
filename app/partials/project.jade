@@ -1,0 +1,12 @@
+div(ng-app='ng-app')
+  div(ng-controller='ProjectCtrl')
+    h2
+      small
+        a(ng-href='#/projects') Projects 
+        > 
+      {{project.title}}
+    span {{outdatedCount()}} of {{packages.length}} outdated
+    ul
+      li(ng-repeat='package in packages')
+        {{package.name}} - {{package.version}} 
+        span(class='{{package.status | iconStatus}}')

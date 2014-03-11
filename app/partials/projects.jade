@@ -4,7 +4,7 @@ div(ng-app='ng-app')
     span {{outdatedCount()}} of {{projects.length}} outdated
     ul
       li(ng-repeat='project in projects')
-        {{project.title}} 
+        a(ng-href='#/project/{{project.id}}') {{project.title}} 
         span(class='{{project.status | iconStatus}}')
     form(class='form-inline', ng-submit='addProject()')
       input(type='text', ng-model='projectTitle', size='50', placeholder='Title')

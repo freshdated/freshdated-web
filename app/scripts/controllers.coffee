@@ -2,7 +2,7 @@
 
 ### Controllers ###
 
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['app.services'])
 
 .controller('AppCtrl', [
   '$scope'
@@ -76,7 +76,7 @@ angular.module('app.controllers', ['app.services'])
 
 ($scope, Projects) ->
 
-  $scope.projects = Projects.query()
+  $scope.projects = Projects.all.query()
 
   $scope.addProject = ->
     $scope.projects.push
@@ -91,6 +91,25 @@ angular.module('app.controllers', ['app.services'])
     count = 0
     angular.forEach $scope.projects, (project) ->
       count += (if project.status == 'outdated' then 1 else 0)
+
+    count
+])
+
+.controller('ProjectCtrl', [
+  '$scope'
+  '$routeParams'
+  'Projects'
+  'Packages'
+
+($scope, $routeParams, Projects, Packages) ->
+
+  $scope.project = Projects.one.get({projectId: $routeParams.projectId})
+  $scope.packages = Packages.all.query({projectId: $routeParams.projectId})
+
+  $scope.outdatedCount = ->
+    count = 0
+    angular.forEach $scope.packages, (pkg) ->
+      count += (if pkg.status == 'outdated' then 1 else 0)
 
     count
 ])
