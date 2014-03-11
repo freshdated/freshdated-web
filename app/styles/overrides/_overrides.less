@@ -16,7 +16,84 @@ bootstrap, so they may override it's behavior.
   color: grey;
 }
 
+// Icons
 [class^="icon-"],
 [class*=" icon-"] {
   background-image: url("../icons/glyphicons-halflings.png");
+}
+
+// Navbar
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+  text-decoration: underline;
+  box-shadow: initial;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
+  box-shadow: initial;
+  padding: 10px;
+}
+.navbar-inner {
+  background-image: initial;
+}
+
+.navbar-static-top .navbar-inner {
+  border-width: 0 0 2px;
+}
+
+.navbar .brand {
+  font-size: 28px;
+  font-weight: bold;
+  border-right: 1px solid #979797;
+}
+
+h2 {
+  font-size: 56px;
+  font-weight: bold;
+}
+
+h2.project {
+  padding-bottom: 5px;
+}
+
+.project-details {
+  color: #CDCDCD;
+  font-size: 20px;
+}
+
+.table {
+  margin-top: 35px;
+
+  thead {
+    background-color: #1894BB;
+    color: white;
+    text-transform: uppercase;
+
+    th {
+      padding: 7px;
+    }
+  }
+}
+
+.fa {
+  font-size: 20px;
+}
+
+.fa-question-circle {
+  color: #C2C2C2;
+}
+
+.fa-chevron-circle-up {
+  color: #23881B;
+}
+
+.fa-chevron-circle-down {
+  color: #D0910B;
+}
+
+.fa-exclamation-circle {
+  color: #B80001;
+}
+
+.fa-check-circle {
+  color: #23881B;
 }
