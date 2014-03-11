@@ -4,9 +4,22 @@
 
 angular.module('app.filters', [])
 
-.filter 'iconStatus', ->
+.filter 'statusIcon', ->
   (text) ->
     if text == 'updated'
-      'icon-ok-sign'
+      'fa fa-chevron-circle-up'
     else if text == 'outdated'
-      'icon-exclamation-sign'
+      'fa fa-chevron-circle-down'
+    else
+      'fa fa-question-circle'
+
+
+.filter 'statusDescription', ->
+  (pkg) ->
+    if pkg.status == 'updated'
+      ' Freshdated'
+    else if pkg.status == 'outdated'
+      ' Outdated'
+    else if pkg.last_version == null
+      ' Not checked'
+

@@ -1,12 +1,29 @@
 div(ng-app='ng-app')
   div(ng-controller='ProjectCtrl')
-    h2
-      small
-        a(ng-href='#/projects') Projects 
-        > 
+    h2(class='project')
       {{project.title}}
-    span {{outdatedCount()}} of {{packages.length}} outdated
-    ul
-      li(ng-repeat='package in packages')
-        {{package.name}} - {{package.version}} 
-        span(class='{{package.status | iconStatus}}')
+    span(class='project-details')
+      p
+        {{project.repository}}
+      p
+        {{outdatedCount()}} outdated,
+        {{notCheckedCount()}} not checked of
+        {{packages.length}} packages
+    table(class='table')
+      thead
+        tr
+          th Package
+          th Version
+          th Last Version
+          th Status
+      tbody
+        tr(ng-repeat='package in packages')
+          td
+            {{package.name}}
+          td
+            {{package.version}} 
+          td
+            {{package.last_version || '-'}} 
+          td
+            span(class='{{package.status | statusIcon}}')
+            {{package | statusDescription}}

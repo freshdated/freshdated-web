@@ -58,6 +58,7 @@ angular.module('app.controllers', ['app.services'])
       count += (if project.status == 'outdated' then 1 else 0)
 
     count
+
 ])
 
 .controller('ProjectCtrl', [
@@ -75,6 +76,20 @@ angular.module('app.controllers', ['app.services'])
     count = 0
     angular.forEach $scope.packages, (pkg) ->
       count += (if pkg.status == 'outdated' then 1 else 0)
+
+    count
+
+  $scope.updatedCount = ->
+    count = 0
+    angular.forEach $scope.packages, (pkg) ->
+      count += (if pkg.status == 'updated' then 1 else 0)
+
+    count
+
+  $scope.notCheckedCount = ->
+    count = 0
+    angular.forEach $scope.packages, (pkg) ->
+      count += (if pkg.status == null then 1 else 0)
 
     count
 ])
